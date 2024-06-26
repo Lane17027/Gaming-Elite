@@ -1,6 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
-const cors = require('cors')
+// const cors = require('cors')
 const logger = require('morgan')
 const gameController = require('./controllers/games')
 const consoleController = require('./controllers/consoles')
@@ -17,7 +17,7 @@ const app = express()
 const PORT = process.env.PORT || 3001
 
 app.use(express.json())
-app.use(cors())
+// app.use(cors())
 app.use(logger('dev'))
 
 app.listen(PORT, () => {
@@ -95,4 +95,3 @@ app.get('/users/:id/shopping-cart/items', getCartItemsInShoppingCart)
 app.get('/*', async (req,res) => {
   res.send('An error has occurred. Try again later (404)')
 })
-
