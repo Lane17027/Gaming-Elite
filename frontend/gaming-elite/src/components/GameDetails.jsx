@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import '../style/GameDetails.css'
 import { useCart } from '../CartContext';
+import baseUrl from "../api/api";
 
 export default function GameDetails () {
 
@@ -15,7 +16,7 @@ export default function GameDetails () {
     useEffect(() => {
         const getGame = async () => {
             try {
-                const response = await axios.get(`http://localhost:3001/games/${id}`)
+                const response = await axios.get(`${baseUrl}/games/${id}`)
                 setGame(response.data)
 
                 setLoading(false)

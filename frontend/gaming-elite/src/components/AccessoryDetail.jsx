@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { Link } from 'react-router-dom'
 import axios from "axios";
 import '../style/AccessoryDetail.css'
+import baseUrl from "../api/api";
 
 import { useCart } from '../CartContext';
 
@@ -14,7 +15,7 @@ export default function AccessoryDetail ({ user_id }) {
 
     useEffect(() => {
         const getAccessories = async () => {
-            const response = await axios.get(`http://localhost:3001/accessories/${id}`)
+            const response = await axios.get(`${baseUrl}/accessories/${id}`)
             setAccessories(response.data)
         }
         getAccessories()

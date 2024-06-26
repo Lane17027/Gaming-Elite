@@ -7,6 +7,7 @@ import axios from "axios";
 import RetroHeader from "./RetroHeader"
 import RetroFooter from './RetroFooter'
 import styles from '../style/RetroGameDetails.module.css'
+import baseUrl from "../api/api";
 
 export default function RetroConsoleDetails () {
 
@@ -17,7 +18,7 @@ export default function RetroConsoleDetails () {
 
     useEffect(() => {
         const getConsole = async () => {
-            const response = await axios.get(`http://localhost:3001/consoles/${id}`)
+            const response = await axios.get(`${baseUrl}/consoles/${id}`)
             setConsole(response.data)
         }
         getConsole()
@@ -33,7 +34,7 @@ export default function RetroConsoleDetails () {
     return(
     <body className={styles.retroConsoleDetailsBody}>
         <div className={styles.retroConsoleDetailsCard}>
-            {location.pathname.startsWith("/retro/") && <RetroHeader />}    
+            {location.pathname.startsWith("/retro/") && <RetroHeader />}
             <h1>{console.name}</h1>
             <img className={styles.consolesCover} src={console.img_path} alt="" />
             <h3 className={styles.retroConsoleYear}> Release Year: {console.year_released}</h3>

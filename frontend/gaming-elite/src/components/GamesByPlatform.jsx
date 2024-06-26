@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "../style/GamesByPlatform.css";
+import baseUrl from "../api/api";
 
 import axios from "axios";
 
@@ -20,7 +21,7 @@ export default function GamesByPlatform() {
 
   useEffect(() => {
     const getGames = async () => {
-      const response = await axios.get(`http://localhost:3001/games`);
+      const response = await axios.get(`${baseUrl}/games`);
       let allGames = response.data;
       //creating an empty array to push games that only have the consoleId, to later set the useState to
       let consoleGames = [];
@@ -40,14 +41,14 @@ export default function GamesByPlatform() {
     getGames();
 
     const getAds = async () => {
-      const adResponse = await axios.get("http://localhost:3001/bannerAds");
+      const adResponse = await axios.get(`${baseUrl}/bannerAds`);
       setAds(adResponse.data);
     };
 
     getAds();
 
     const getConsole = async () => {
-      const response = await axios.get(`http://localhost:3001/consoles/${id}`);
+      const response = await axios.get(`${baseUrl}/consoles/${id}`);
       setConsoles(response.data);
     };
     getConsole();

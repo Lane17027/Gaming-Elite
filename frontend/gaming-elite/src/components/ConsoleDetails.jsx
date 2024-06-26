@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import axios from "axios";
 import '../style/ConsoleDetails.css'
 import { useCart } from '../CartContext';
+import baseUrl from "../api/api";
 
 export default function ConsoleDetails ({ user_id }) {
     const { addToCart } = useCart();
@@ -13,7 +14,7 @@ export default function ConsoleDetails ({ user_id }) {
 
     useEffect(() => {
         const getConsole = async () => {
-            const response = await axios.get(`http://localhost:3001/consoles/${id}`)
+            const response = await axios.get(`${baseUrl}/consoles/${id}`)
             setConsoles(response.data)
         }
         getConsole()

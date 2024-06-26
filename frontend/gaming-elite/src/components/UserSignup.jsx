@@ -3,13 +3,14 @@ import { useState } from 'react';
 import '../style/UserSignup.css';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import baseUrl from "../api/api";
 
 
 
 const UserSignup = () => {
 
     const navigate = useNavigate();
-    
+
     const [user, setUser] = useState({
         username: '',
         password: '',
@@ -31,7 +32,7 @@ const UserSignup = () => {
 
         try {
 
-            const response = await fetch('http://localhost:3001/users/signup', {
+            const response = await fetch(`${baseUrl}/users/signup`, {
 
 
 
@@ -122,7 +123,7 @@ const UserSignup = () => {
 
                     <button type="submit">Sign Up</button>
 
-                
+
                     <button type="button" className="cancel" onClick={handleCancel}>
                         Cancel
                     </button>
@@ -135,7 +136,7 @@ const UserSignup = () => {
                         </div>
                     <Link to="/login">
                         <button type="button" className="login">
-                        
+
                             Login
                         </button>
                     </Link>
@@ -146,4 +147,3 @@ const UserSignup = () => {
 };
 
 export default UserSignup;
-

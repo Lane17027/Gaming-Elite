@@ -3,6 +3,7 @@ import { useState ,useEffect} from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import baseUrl from "../api/api";
 
 
 
@@ -17,7 +18,7 @@ const Header = ({  loggedIn, username, setLoggedIn, setGames, setConsoles }) => 
     const handleChange = (event) => {
         setSearchTerm(event.target.value);
         // Update search term as user types
-       
+
     };
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -27,7 +28,7 @@ const Header = ({  loggedIn, username, setLoggedIn, setGames, setConsoles }) => 
         setShowSearchResults(true);
         navigate('/searchResults');
         setSearchTerm('')
-   
+
     };
 
     const handleSearchTypeChange = (event) => {
@@ -37,18 +38,18 @@ const Header = ({  loggedIn, username, setLoggedIn, setGames, setConsoles }) => 
     const handleSignOut = () => {
         setLoggedIn(false);
         localStorage.removeItem('loggedIn');
-        
+
     };
 
         function executeSearch () {
             let url = '';
             if (searchType === 'games') {
-                url = `http://localhost:3001/games/search?search=${searchTerm}`;
+                url = `${baseUrl}/games/search?search=${searchTerm}`;
             } else if (searchType === 'consoles') {
-                url = `http://localhost:3001/consoles/search?search=${searchTerm}`;
+                url = `${baseUrl}/consoles/search?search=${searchTerm}`;
             }
             console.log(url)
-    
+
             axios.get(url)
                 .then(response => {
                     if (searchType === 'games') {

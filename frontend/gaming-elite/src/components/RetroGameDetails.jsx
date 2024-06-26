@@ -7,6 +7,7 @@ import axios from "axios"
 import RetroHeader from "./RetroHeader"
 import RetroFooter from './RetroFooter'
 import styles from '../style/RetroGameDetails.module.css'
+import baseUrl from "../api/api";
 
 export default function RetroGameDetails () {
 
@@ -17,7 +18,7 @@ export default function RetroGameDetails () {
 
   useEffect(() => {
     const getGame = async () => {
-        const response = await axios.get(`http://localhost:3001/games/${id}`)
+        const response = await axios.get(`${baseUrl}/games/${id}`)
         setGame(response.data)
         console.log(response.data)
     }
@@ -51,7 +52,7 @@ const renderLogos = () => {
                         return <img className={styles.superNintendo} key={id} src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/SNES_logo.svg/296px-SNES_logo.svg.png' alt="Super Nintendo" />
                     case '65f2f99ca13bd3d2905701a0':
                         return <img className={styles.nintendo64} key={id} src='https://logowik.com/content/uploads/images/n64-nintendo-642475.jpg' alt="Nintendo64" />
-                        
+
                     default:
                         return null
                 }
@@ -83,7 +84,7 @@ return(
             <h3 className={styles.retroOnline}> Online capabilities: {game.online}</h3>
             <button className={styles.addToCart} onClick={handleAddToCart}>Add to Cart</button>
             <Link className={styles.returnLink} to="/retro"> Pixelate! </Link>
-        
+
         </div>
             <div className={styles.retroGameFooter}>
             {location.pathname.startsWith("/retro/") && <RetroFooter />}

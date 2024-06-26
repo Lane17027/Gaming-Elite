@@ -1,4 +1,5 @@
 import React from 'react'
+import baseUrl from "../api/api";
 
 export default function Footer () {
     return (
@@ -35,11 +36,9 @@ export default function Footer () {
       <div className="copyright">
         <p>&copy; Gaming Elite</p>
       </div>
-      
+
     </footer>
-        
-        
+
+
      )
     }
-
-

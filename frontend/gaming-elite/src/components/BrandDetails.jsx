@@ -5,6 +5,7 @@ import "../style/BrandDetails.css";
 import axios from "axios";
 
 import { useNavigate } from "react-router-dom";
+import baseUrl from "../api/api";
 
 
 export default function BrandDetails() {
@@ -20,14 +21,14 @@ export default function BrandDetails() {
 
   useEffect(() => {
     const getConsoles = async () => {
-      const response = await axios.get("http://localhost:3001/consoles");
+      const response = await axios.get(`${baseUrl}/consoles`);
 
       setConsoles(response.data);
     };
     getConsoles();
 
     const getAds = async () => {
-      const adResponse = await axios.get("http://localhost:3001/bannerAds");
+      const adResponse = await axios.get(`${baseUrl}/bannerAds`);
       setAds(adResponse.data);
     };
 

@@ -17,6 +17,7 @@ import RetroConsoleDetails from "./RetroConsoleDetails";
 import GamesByPlatform from "./GamesByPlatform";
 import BrandDetails from "./BrandDetails";
 import AccessoryDetail from './AccessoryDetail'
+import baseUrl from "../api/api";
 
 export default function Main() {
   const [loggedIn, setLoggedIn] = useState(false);

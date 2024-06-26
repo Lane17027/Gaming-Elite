@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../style/Games.css";
+import baseUrl from "../api/api";
 
 export default function Consoles() {
   const [ads, setAds] = useState([]);
@@ -15,14 +16,14 @@ export default function Consoles() {
 
   useEffect(() => {
     const getAds = async () => {
-      const adResponse = await axios.get("http://localhost:3001/bannerAds");
+      const adResponse = await axios.get(`${baseUrl}/bannerAds`);
       setAds(adResponse.data);
     };
 
     getAds();
 
     const getBrands = async () => {
-      const brandResponse = await axios.get("http://localhost:3001/brands");
+      const brandResponse = await axios.get(`${baseUrl}/brands`);
       setBrands(brandResponse.data);
     };
     getBrands();

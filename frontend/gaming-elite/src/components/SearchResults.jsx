@@ -1,6 +1,7 @@
 import SearchConsoleList from './searchConsoleList';
 import SearchGameList from './searchGameList';
 import '../style/searchResult.css'
+import baseUrl from "../api/api";
 
 function SearchResults({games, consoles}) {
 
@@ -26,7 +27,7 @@ function SearchResults({games, consoles}) {
             {renderedComponent}
         </div>
     )
-    
+
 }
 
 export default SearchResults;

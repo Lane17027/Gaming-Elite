@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../style/Accessory.css";
+import baseUrl from "../api/api";
+
 export default function Accessory() {
   const [accessories, setAccessories] = useState([]);
   const navigate = useNavigate();
@@ -9,7 +11,7 @@ export default function Accessory() {
   useEffect(() => {
     const getAccessories = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/accessories");
+        const response = await axios.get(`${baseUrl}/accessories`);
         setAccessories(response.data);
       } catch (error) {
         console.error("Error fetching accessories: ", error);

@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from "../style/Retro.module.css"
+import baseUrl from "../api/api";
 
 export default function Footer () {
     return (
@@ -36,9 +37,9 @@ export default function Footer () {
       <div className={styles.copyright}>
         <p>&copy; Gaming Elite</p>
       </div>
-      
+
     </footer>
-        
-        
+
+
      )
     }

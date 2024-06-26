@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import baseUrl from "../api/api";
 
 const SearchConsoleList = ({ consoles }) => {
   const [hiddenConsoles, setHiddenConsoles] = useState([]);

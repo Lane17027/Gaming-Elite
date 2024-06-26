@@ -1,15 +1,16 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import baseUrl from "../api/api";
 
 const UserLogin = ({ setLoggedIn ,setUsername,setUserId }) => {
     const [user, setUser] = useState({
         username: '',
         password: '',
-      
+
     });
 
     const navigate = useNavigate();
-    
+
 
     const handleChange = (e) => {
         setUser({
@@ -21,7 +22,7 @@ const UserLogin = ({ setLoggedIn ,setUsername,setUserId }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('http://localhost:3001/users/login', {
+            const response = await fetch(`${baseUrl}/users/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -34,7 +35,7 @@ const UserLogin = ({ setLoggedIn ,setUsername,setUserId }) => {
             if (!response.ok) {
                 throw new Error('Login failed');
             }
-          
+
             const data = await response.json(); // Parse the response JSON data
             alert('Login successful');
             setLoggedIn(true); // Call setLoggedIn here
@@ -48,13 +49,13 @@ const UserLogin = ({ setLoggedIn ,setUsername,setUserId }) => {
             alert('Login failed');
         }
     };
-    
+
 
     const handleCancel = () => {
         setUser({
             username: '',
             password: '',
-            
+
         });
     };
 

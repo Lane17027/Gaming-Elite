@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import '../style/searchResult.css';
+import baseUrl from "../api/api";
 
 const SearchGameList = ({ games }) => {
   const [hiddenGames, setHiddenGames] = useState([]);
@@ -18,7 +19,7 @@ const SearchGameList = ({ games }) => {
 
         {location.pathname.startsWith("/search") &&
           <div className="search-title">
-    
+
           </div>
         }
 
@@ -31,8 +32,8 @@ const SearchGameList = ({ games }) => {
                   <img className='search-image' src={game.img_path} alt={game.title} />
                 </div>
 
-          
-                  
+
+
 
                   <div className="search-details-container">
                     <div className="search-title-container">
@@ -57,7 +58,7 @@ const SearchGameList = ({ games }) => {
                       </div>
                     </div>
                   </div>
-               
+
               </div>
             </Link>
           ))}

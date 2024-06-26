@@ -5,6 +5,7 @@ import RetroHeader from "./RetroHeader";
 import RetroNavBar from "./RetroNavBar";
 import RetroFooter from "./RetroFooter";
 import styles from "../style/Retro.module.css";
+import baseUrl from "../api/api";
 
 export default function Retro() {
   const [game, setGame] = useState([]);
@@ -22,10 +23,10 @@ export default function Retro() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const gamesResponse = await axios.get("http://localhost:3001/games");
+      const gamesResponse = await axios.get(`${baseUrl}/games`);
       setGame(gamesResponse.data);
 
-      const consolesResponse = await axios.get("http://localhost:3001/consoles");
+      const consolesResponse = await axios.get(`${baseUrl}/consoles`);
       setConsoles(consolesResponse.data);
     };
 
@@ -34,7 +35,7 @@ export default function Retro() {
 
   return (
     <body className={styles.retroBody}>
-      {location.pathname === "/retro" && <RetroHeader />}   
+      {location.pathname === "/retro" && <RetroHeader />}
       <h1 className={styles.retroGame}> Retro Games </h1>
       <a href='https://play.runescape.com/' target='_blank'>
       <img className={styles.runescapeAd} src='https://cdn2.steamgriddb.com/logo_thumb/2feb75fc9b86f959e54a9cc501e190e3.png' />

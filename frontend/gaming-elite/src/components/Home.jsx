@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../style/Home.css";
+import baseUrl from "../api/api";
 
 export default function Home() {
   const [games, setGames] = useState([]);
@@ -22,7 +23,7 @@ export default function Home() {
 
   useEffect(() => {
     const getGames = async () => {
-      const response = await axios.get(`http://localhost:3001/games`);
+      const response = await axios.get(`${baseUrl}/games`);
 
       let filteredGames = [];
 
@@ -37,14 +38,14 @@ export default function Home() {
     getGames();
 
     const getConsoles = async () => {
-      const response = await axios.get("http://localhost:3001/consoles");
+      const response = await axios.get(`${baseUrl}/consoles`);
 
       setConsoles(response.data);
     };
     getConsoles();
 
     const getAds = async () => {
-      const adResponse = await axios.get("http://localhost:3001/bannerAds");
+      const adResponse = await axios.get(`${baseUrl}/bannerAds`);
       setAds(adResponse.data);
     };
 

@@ -1,15 +1,18 @@
 import '../style/ShoppingCart.css';
 import { useCart } from '../CartContext';
+import baseUrl from "../api/api";
 
 const Cart = () => {
   const { cartItems, removeFromCart, cartTotal } = useCart();
   const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
   const estimatedTax = 0.1 * cartTotal; // Assuming tax rate is 10%
-  
+
+
+
 
 
   const handleCheckout = () => {
-   
+
     alert('Checkout functionality is not implemented yet.');
   };
 
@@ -31,9 +34,9 @@ const Cart = () => {
                   </div>
                   <div className="item-details-button-container">
                     <div className="item-details-container">
-                      <div className='itemName'>{item.name}</div> 
+                      <div className='itemName'>{item.name}</div>
                       <div className='itemPrice'>${item.price}</div>
-                      <div className='Quantity'>Quantity: {item.quantity}</div> 
+                      <div className='Quantity'>Quantity: {item.quantity}</div>
                     </div>
                     <div className="remove-button-container">
                       <button className="remove-button" onClick={() => removeFromCart(item.id)}>Remove</button>
@@ -53,7 +56,7 @@ const Cart = () => {
                    <div className='summary-line'>
                       <p className='2'>Estimated Tax:</p>
                       <p className='3'>${estimatedTax.toFixed(2)}</p>
- 
+
                     </div>
                     <hr></hr>
                     <div className='summary-line'>
@@ -74,4 +77,3 @@ const Cart = () => {
 };
 
 export default Cart;
-
